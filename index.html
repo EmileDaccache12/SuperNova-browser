@@ -82,6 +82,12 @@
             background: none;
         }
 
+        #search-btn {
+            background: none;
+            border: none;
+            border-radius: 45px;
+        }
+
         #chatgpt:hover , #gemini:hover , #copy:hover{
             cursor: pointer;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -133,7 +139,7 @@
             }
 
             #logo {
-                width: 38px;
+                width: 32px;
             }
         }
     </style>
@@ -162,6 +168,7 @@
             const ai = document.getElementById("ai");
             const search = document.getElementById("search");
             const input = document.getElementById("input");
+            const search_btn = document.getElementById("search-btn");
 
             copy.style.display = "none";
 
@@ -178,6 +185,16 @@
                 copy.style.display = "none";
                 input.style.border = "3px solid rgba(117, 117, 117, 0.526)";
                 input.style.boxShadow = "0 4px 12px rgba(0, 0, 0, 0.22)";
+            });
+            
+            search.addEventListener("input" , function() {
+                if (search.value.trim() !== "") {
+                    search_btn.style.cursor = "pointer";
+                    search_btn.disabled = false;
+                } else {
+                    search_btn.style.cursor = "not-allowed";
+                    search_btn.disabled = true;
+                }
             });
 
             copy.addEventListener("mousedown" , function(event) {
@@ -206,7 +223,9 @@
 
         <div id="home-content">
             <div id="input">
-                <img src="search-icon.png" alt="icon" class="icon">
+                <button id="search-btn">
+                    <img src="search-icon.png" alt="icon" class="icon">
+                </button>
                 <input type="search" name="userinput" placeholder="Search" spellcheck="false" id="search">
 
                 <div id="ai">
@@ -234,9 +253,8 @@
                     <img src="copy-icon.png" alt="icon" class="icon">
                 </button>
             </div>
-            <datalist id="history"></datalist>
         </div>
-
     </div>
+    <script src="search.js" defer></script>
 </body>
 </html>
