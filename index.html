@@ -123,6 +123,7 @@
             align-items: center;
             justify-content: center;
             padding: 10px;
+            border-radius: 0.3px;
         }
 
         #shortcut1 {
@@ -134,14 +135,23 @@
         }
 
         .shortcut > div {
-            width: 60px;
-            height: 60px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             background-color: rgba(246, 246, 246, 0.97);
             display: flex;
             justify-content: center;
             align-items: center;
             font-size: 400%;
+            padding: 3px;
+        }
+
+        .shortcut > div > img {
+            width: 85%;
+            height: 85%;
+            border-radius: 45%;
+            margin: auto;
+            align-self: center;
         }
 
         .shortcut > label {
@@ -231,6 +241,14 @@
 
             #popup > input {
                 width: 250px;
+            }
+
+            #shortcuts {
+                width: 90%;
+            }
+
+            .shortcut {
+                padding: 6px;
             }
         }
 
@@ -456,6 +474,7 @@
 
                         let shortcut;
                         let label;
+                        let current_shortcut;
 
                         function hide_popup () {
                             popup.style.display = "none";
@@ -476,9 +495,21 @@
                             hide_popup()
                         });
 
+                        function getLogo(url) {
+                            let domain = new URL(url).hostname;
+                            return `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
+                        }
+
                         commit.addEventListener("click", function() {
                             if (url.value === "" || site_name.value === "") {
                                 error.innerHTML = "Must Enter a Site Name and a URL";
+                                return;
+                            }
+
+                            try {
+                                new URL(url.value);
+                            } catch {
+                                error.innerHTML = "Please enter a valid URL.";
                                 return;
                             }
 
@@ -520,7 +551,13 @@
                                 url9 = url.value;
                             }
 
-                            label.innerHTML = site_name.value;
+                            if (site_name.value.length > 18) {
+                                label.innerHTML = site_name.value.slice(0, 18) + "...";
+                            } else {
+                                label.innerHTML = site_name.value;
+                            }
+
+                            current_shortcut.querySelector("div").innerHTML = `<img src="${getLogo(url.value)}">`;
 
                             shortcut.style.display = "flex";
 
@@ -533,6 +570,7 @@
                         // shortcut 1
                         shortcut1.addEventListener("click", function () {
                             if (url1 === "") {
+                                current_shortcut = shortcut1
                                 shortcut = shortcut2;
                                 label = label1;
                                 open_popup();
@@ -544,6 +582,7 @@
                         // shortcut 2
                         shortcut2.addEventListener("click", function () {
                             if (url2 === "") {
+                                current_shortcut = shortcut2;
                                 shortcut = shortcut3;
                                 label = label2;
                                 open_popup();
@@ -555,6 +594,7 @@
                         // shortcut 3
                         shortcut3.addEventListener("click", function () {
                             if (url3 === "") {
+                                current_shortcut = shortcut3;
                                 shortcut = shortcut4;
                                 label = label3;
                                 open_popup();
@@ -566,6 +606,7 @@
                         // shortcut 4
                         shortcut4.addEventListener("click", function () {
                             if (url4 === "") {
+                                current_shortcut = shortcut4;
                                 shortcut = shortcut5;
                                 label = label4;
                                 open_popup();
@@ -577,6 +618,7 @@
                         // shortcut 5
                         shortcut5.addEventListener("click", function () {
                             if (url5 === "") {
+                                current_shortcut = shortcut5;
                                 shortcut = shortcut6;
                                 label = label5;
                                 open_popup();
@@ -588,6 +630,7 @@
                         // shortcut 6
                         shortcut6.addEventListener("click", function () {
                             if (url6 === "") {
+                                current_shortcut = shortcut6;
                                 shortcut = shortcut7;
                                 label = label6;
                                 open_popup();
@@ -599,6 +642,7 @@
                         // shortcut 7
                         shortcut7.addEventListener("click", function () {
                             if (url7 === "") {
+                                current_shortcut = shortcut7;
                                 shortcut = shortcut8;
                                 label = label7;
                                 open_popup();
@@ -610,6 +654,7 @@
                         // shortcut 8
                         shortcut8.addEventListener("click", function () {
                             if (url8 === "") {
+                                current_shortcut = shortcut8;
                                 shortcut = shortcut9;
                                 label = label8;
                                 open_popup();
@@ -621,6 +666,7 @@
                         // shortcut 9
                         shortcut9.addEventListener("click", function () {
                             if (url9 === "") {
+                                current_shortcut = shortcut9;
                                 label = label9;
                                 open_popup();
                             } else {
