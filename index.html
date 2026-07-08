@@ -442,7 +442,20 @@
                         const url = document.getElementById("url");
                         const site_name = document.getElementById("site-name");
 
+                        let url1 = "";
+                        let url2 = "";
+                        let url3 = "";
+                        let url4 = "";
+                        let url5 = "";
+                        let url6 = "";
+                        let url7 = "";
+                        let url8 = "";
+                        let url9 = "";
+
                         const error = document.getElementById("error");
+
+                        let shortcut;
+                        let label;
 
                         function hide_popup () {
                             popup.style.display = "none";
@@ -450,7 +463,7 @@
                         }
 
                         function open_popup () {
-                            if (url.value === "" && site_name.value === "") {
+                            if (url.value === "" || site_name.value === "") {
                                 popup.style.display = "flex";
                                 overlay.style.display = "block";
                             }
@@ -463,99 +476,157 @@
                             hide_popup()
                         });
 
-                        commit.addEventListener("click" , function() {
-                            if (url.value === "" && site_name.value === "") {
+                        commit.addEventListener("click", function() {
+                            if (url.value === "" || site_name.value === "") {
                                 error.innerHTML = "Must Enter a Site Name and a URL";
                                 return;
                             }
 
+                            error.innerHTML = "";
+
+                            if (shortcut === shortcut2) {
+                                url1 = url.value;
+                            }
+
+                            else if (shortcut === shortcut3) {
+                                url2 = url.value;
+                            }
+
+                            else if (shortcut === shortcut4) {
+                                url3 = url.value;
+                            }
+
+                            else if (shortcut === shortcut5) {
+                                url4 = url.value;
+                            }
+
+                            else if (shortcut === shortcut6) {
+                                url5 = url.value;
+                            }
+
+                            else if (shortcut === shortcut7) {
+                                url6 = url.value;
+                            }
+
+                            else if (shortcut === shortcut8) {
+                                url7 = url.value;
+                            }
+
+                            else if (shortcut === shortcut9) {
+                                url8 = url.value;
+                            }
+
+                            else {
+                                url9 = url.value;
+                            }
+
                             label.innerHTML = site_name.value;
 
-                            hide_popup();
-
                             shortcut.style.display = "flex";
+
+                            url.value = "";
+                            site_name.value = "";
+
+                            hide_popup();
                         });
                         
                         // shortcut 1
-                        shortcut1.addEventListener("click" , function() {
-                            shortcut = shortcut2;
-                            label = label1;
-
-                            hide_popup();
-                            open_popup();
+                        shortcut1.addEventListener("click", function () {
+                            if (url1 === "") {
+                                shortcut = shortcut2;
+                                label = label1;
+                                open_popup();
+                            } else {
+                                window.location.href = url1;
+                            }
                         });
 
                         // shortcut 2
-                        shortcut2.addEventListener("click" , function() {
-                            shortcut = shortcut3;
-                            label = label2;
-
-                            hide_popup();
-                            open_popup();
+                        shortcut2.addEventListener("click", function () {
+                            if (url2 === "") {
+                                shortcut = shortcut3;
+                                label = label2;
+                                open_popup();
+                            } else {
+                                window.location.href = url2;
+                            }
                         });
 
                         // shortcut 3
-                        shortcut3.addEventListener("click" , function() {
-                            shortcut = shortcut4;
-                            label = label3;
-
-                            hide_popup();
-                            open_popup();
+                        shortcut3.addEventListener("click", function () {
+                            if (url3 === "") {
+                                shortcut = shortcut4;
+                                label = label3;
+                                open_popup();
+                            } else {
+                                window.location.href = url3;
+                            }
                         });
 
                         // shortcut 4
-                        shortcut4.addEventListener("click" , function() {
-                            shortcut = shortcut5;
-                            label = label4;
-
-                            hide_popup();
-                            open_popup();
+                        shortcut4.addEventListener("click", function () {
+                            if (url4 === "") {
+                                shortcut = shortcut5;
+                                label = label4;
+                                open_popup();
+                            } else {
+                                window.location.href = url4;
+                            }
                         });
 
                         // shortcut 5
-                        shortcut5.addEventListener("click" , function() {
-                            shortcut = shortcut6;
-                            label = label5;
-
-                            hide_popup();
-                            open_popup();
+                        shortcut5.addEventListener("click", function () {
+                            if (url5 === "") {
+                                shortcut = shortcut6;
+                                label = label5;
+                                open_popup();
+                            } else {
+                                window.location.href = url5;
+                            }
                         });
 
                         // shortcut 6
-                        shortcut6.addEventListener("click" , function() {
-                            shortcut = shortcut7;
-                            label = label6;
-
-                            hide_popup();
-                            open_popup();
+                        shortcut6.addEventListener("click", function () {
+                            if (url6 === "") {
+                                shortcut = shortcut7;
+                                label = label6;
+                                open_popup();
+                            } else {
+                                window.location.href = url6;
+                            }
                         });
 
                         // shortcut 7
-                        shortcut7.addEventListener("click" , function() {
-                            shortcut = shortcut8;
-                            label = label7;
-
-                            hide_popup();
-                            open_popup();
+                        shortcut7.addEventListener("click", function () {
+                            if (url7 === "") {
+                                shortcut = shortcut8;
+                                label = label7;
+                                open_popup();
+                            } else {
+                                window.location.href = url7;
+                            }
                         });
 
                         // shortcut 8
-                        shortcut8.addEventListener("click" , function() {
-                            shortcut = shortcut9;
-                            label = label8;
-
-                            hide_popup();
-                            open_popup();
+                        shortcut8.addEventListener("click", function () {
+                            if (url8 === "") {
+                                shortcut = shortcut9;
+                                label = label8;
+                                open_popup();
+                            } else {
+                                window.location.href = url8;
+                            }
                         });
 
                         // shortcut 9
-                        shortcut9.addEventListener("click" , function() {
-                            label = label9;
-
-                            hide_popup();
-                            open_popup();
+                        shortcut9.addEventListener("click", function () {
+                            if (url9 === "") {
+                                label = label9;
+                                open_popup();
+                            } else {
+                                window.location.href = url9;
+                            }
                         });
-
                     });
                 </script>
             </div>
@@ -567,7 +638,7 @@
             <p id="error" style="color: red; font-size: medium;"></p>
             
             <label for="input">Enter URL</label>
-            <input type="text" placeholder="example-site.com" id="url">
+            <input type="text" placeholder="https://www.example-site.com" id="url">
             <br>
             <label for="input">Enter Website Name</label>
             <input type="text" placeholder="Example Site" id="site-name">
